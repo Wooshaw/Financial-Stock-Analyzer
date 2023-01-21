@@ -102,10 +102,10 @@ page_dependencies = ui.tags.head(
 
 app_ui = ui.page_navbar(
     ui.nav(
-        "Stock Analysis",
+        "Financial Analysis Web App",
         ui.layout_sidebar(
             sidebar=ui.panel_sidebar(
-                ui.h2("Select a Stock"),
+                ui.h2("Select a stock"),
                 ui.input_selectize(
                     "stock_symbol",
                     "Stock Symbol",
@@ -137,7 +137,7 @@ app_ui = ui.page_navbar(
         ),
     ),
     title = ui.tags.div(
-        ui.h4("This is the Title"),
+        ui.h4("S&P 500 Financial Information"),
         style="display:flex;-webkit-filter: drop-shadow(2px 2px 2px #222);"
     ),
     bg="#0062cc",
@@ -199,4 +199,5 @@ def server(input, output, session: Session):
         )
 
 www_dir = Path(__file__).parent / "www"
+
 app = App(app_ui, server, static_assets=www_dir)
