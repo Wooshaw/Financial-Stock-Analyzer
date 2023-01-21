@@ -21,6 +21,12 @@ from pathlib import Path
 # Default App Inputs 
 Title = "Financial Stock Analyzer"
 
+# Data Mining
+
+payload=pd.read_html('https://en.wikipedia.org/wiki/List_of_S%26P_500_companies')
+df = payload[0]
+symbols = df['Symbol'].values.tolist()
+
 # Data input
 
 symbol = 'MSFT'
@@ -109,7 +115,7 @@ app_ui = ui.page_navbar(
                 ui.input_selectize(
                     "stock_symbol",
                     "Stock Symbol",
-                    ['AAPL', 'GOOG', 'MSFT'],
+                    symbols,
                     selected='MSFT',
                     multiple=False
                 ),
@@ -146,6 +152,12 @@ app_ui = ui.page_navbar(
 )
 
 def server(input, output, session: Session):
+
+    # Reactive Function
+    @reactive.Calc
+    def stock():
+        return yf.Ticker(str(input.stock_symbol()))
+
     @output
     @render.text
 
@@ -157,6 +169,9 @@ def server(input, output, session: Session):
     @render.ui
 
     def stock_info_ui():
+        
+        stock_info = stock().info
+
         app_ui = ui.row(
 
             # General Information
@@ -187,6 +202,7 @@ def server(input, output, session: Session):
     @output
     @render_widget
     def stock_chart_widget():
+        stock_history = stock().history(period=period)
         fig = make_plotly_chart(stock_history, window_mavg_short, window_mavg_long)
         return go.FigureWidget(fig)
     
@@ -194,6 +210,7 @@ def server(input, output, session: Session):
     @output
     @render.table 
     def income_statement_table():
+        stock_incomestmt = stock().incomestmt
         return (
             stock_incomestmt.reset_index()
         )
