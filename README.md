@@ -23,7 +23,7 @@ This application is a financial stock analyzer built using the Shiny framework i
 
 ### Installation:
 1. Clone this repository 
-2. Run 'pip3 install -r requirements.txt to install all necessary dependencies
+2. Run 'pip3 install -r requirements.txt' to install all necessary dependencies
 3. Install Shiny for Python extension from VScode
 4. Run app.py from 'final_app' file
 
