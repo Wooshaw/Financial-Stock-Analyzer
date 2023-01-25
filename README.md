@@ -5,7 +5,7 @@
 1. <a href="#introduction">Introduction</a> 
 2. <a href="#project">Project Description</a> 
 3. <a href="#Usage">Usage</a> 
-4. <a href="#Contributing">Contributing</a> 
+4. <a href="#todo">TODOs</a> 
   
 <h2 id="introduction">Introduction </h2>
 <p>You are an analyst working at a finance firm. Your boss wants you to make an app that contains financial data of all 507 companies in the S&P 500 to see which investments might be the best in the recession. The specific needs from your boss includes 1. Stock Chart Performance, 2. Company Summary 3. Financial Statements<p>
