@@ -1,0 +1,6 @@
+numpy==1.24.1
+pandas==1.5.2
+plotly==5.12.0
+shiny==0.2.9
+shinywidgets==0.1.4
+yfinance==0.2.4
